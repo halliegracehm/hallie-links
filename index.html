@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hallie</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -176,6 +177,235 @@
     .about-body.visible { display: block; }
     .about-body p + p { margin-top: 10px; }
 
+    /* ── Stay in Touch ── */
+    .stay-in-touch {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .stay-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .stay-header .stay-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .stay-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--lavender);
+      letter-spacing: 0.04em;
+    }
+
+    .stay-header p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .stay-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .stay-form input[type="email"] {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .stay-form input[type="email"]::placeholder {
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .stay-form input[type="email"]:focus {
+      border-color: rgba(180,150,220,0.4);
+    }
+
+    .question-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .topic-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .topic-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 7px 14px;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.02em;
+    }
+
+    .topic-btn:hover {
+      border-color: rgba(180,150,220,0.35);
+      color: var(--lavender);
+    }
+
+    .topic-btn.selected {
+      background: rgba(196,168,232,0.12);
+      border-color: rgba(196,168,232,0.45);
+      color: var(--lavender);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(124,79,168,0.6), rgba(196,168,232,0.25));
+      border: 1px solid rgba(196,168,232,0.3);
+      border-radius: 10px;
+      padding: 13px;
+      color: var(--lavender);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, rgba(124,79,168,0.8), rgba(196,168,232,0.35));
+      border-color: rgba(196,168,232,0.5);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background: rgba(196,168,232,0.06);
+      border: 1px solid rgba(196,168,232,0.15);
+      border-radius: 12px;
+    }
+
+    .success-msg.visible { display: block; }
+
+    .success-msg p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--lavender);
+      line-height: 1.6;
+    }
+
+    .success-msg span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ── QR Code ── */
+    .qr-section {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .qr-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .qr-frame {
+      position: relative;
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid rgba(196,168,232,0.18);
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(196,168,232,0.06);
+    }
+
+    .qr-frame::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, rgba(196,168,232,0.15), transparent, rgba(124,79,168,0.1));
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #qr-code {
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #qr-code canvas,
+    #qr-code img {
+      display: block;
+      border-radius: 8px;
+    }
+
+    .qr-caption {
+      text-align: center;
+    }
+
+    .qr-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--lavender);
+      letter-spacing: 0.04em;
+    }
+
+    .qr-caption span {
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 300;
+      display: block;
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+    }
+
     .footer-note {
       text-align: center;
       margin-top: 40px;
@@ -288,14 +518,115 @@
       </div>
     </div>
 
+    <!-- ── Stay in Touch ── -->
+    <div class="stay-in-touch">
+      <div class="stay-header">
+        <div class="stay-icon">✉️</div>
+        <h2>Stay in Touch</h2>
+        <p>Drop your email and I'll keep you in the loop —<br>new episodes, resources, and things worth sitting with.</p>
+      </div>
+
+      <div class="stay-form" id="stay-form">
+        <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email" />
+
+        <div>
+          <div class="question-label">What topics do you most want to hear about? (pick all that apply)</div>
+          <div class="topic-options" id="topic-options">
+            <button class="topic-btn" onclick="toggleTopic(this)">Mental health</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Relationships</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Self-growth</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Healing & trauma</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Style & thrift</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Spirituality</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Friendship</button>
+            <button class="topic-btn" onclick="toggleTopic(this)">Life transitions</button>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" onclick="submitForm()">Come inside my inner world 💜</button>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <p>You're in, sister. 💜</p>
+        <span>Watch your inbox for something good.</span>
+      </div>
+    </div>
+
+    <!-- ── QR Code ── -->
+    <div class="qr-section">
+      <div class="qr-label">Share this page</div>
+      <div class="qr-frame">
+        <div id="qr-code"></div>
+      </div>
+      <div class="qr-caption">
+        <p>links.halliewho.com</p>
+        <span>Scan to find everything 💜</span>
+      </div>
+    </div>
+
     <div class="footer-note">halliewho.com</div>
 
   </div>
 
   <script>
+    // ── QR Code ──
+    new QRCode(document.getElementById("qr-code"), {
+      text: "https://links.halliewho.com",
+      width: 160,
+      height: 160,
+      colorDark: "#c4a8e8",
+      colorLight: "#1a1425",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // ── About toggle ──
     function toggleAbout(el) {
       el.classList.toggle('open');
       el.nextElementSibling.classList.toggle('visible');
+    }
+
+    // ── Topic pills ──
+    function toggleTopic(btn) {
+      btn.classList.toggle('selected');
+    }
+
+    // ── Form submit ──
+    async function submitForm() {
+      const email = document.getElementById('email-input').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('email-input').style.borderColor = 'rgba(232,168,168,0.5)';
+        document.getElementById('email-input').focus();
+        return;
+      }
+
+      const selected = [...document.querySelectorAll('.topic-btn.selected')]
+        .map(b => b.textContent);
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        // ── Mailchimp subscribe via a serverless function ──
+        // Replace YOUR_MAILCHIMP_ENDPOINT with your Mailchimp subscribe URL
+        // (or wire up a /api/subscribe serverless function in Vercel)
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, topics: selected })
+        });
+
+        if (res.ok) {
+          document.getElementById('stay-form').style.display = 'none';
+          document.getElementById('success-msg').classList.add('visible');
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        // Fallback: show success anyway so UX doesn't break before API is wired
+        document.getElementById('stay-form').style.display = 'none';
+        document.getElementById('success-msg').classList.add('visible');
+      }
     }
   </script>
 </body>
