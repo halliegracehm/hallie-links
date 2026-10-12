@@ -2,607 +2,586 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hallie</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hallie Who | Start here</title>
+  <meta name="description" content="Everything Hallie Who and My Inner Mind in one place: conversations, pattern quizzes, the app, the podcast, books, and printables." />
+  <meta property="og:title" content="Hallie Who | Start here" />
+  <meta property="og:description" content="Conversations, pattern quizzes, the My Inner Mind app and podcast, books, and printables." />
+  <meta property="og:url" content="https://links.halliewho.com" />
+  <meta name="theme-color" content="#F1ECF6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#17111F" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f0b14;
-      --surface: #1a1425;
-      --border: rgba(180,150,220,0.12);
-      --purple: #c4a8e8;
-      --lavender: #e2d4f7;
-      --muted: #9a87b0;
-      --text: #f0eaf8;
-      --accent: #b892e0;
+      --paper: #F1ECF6;
+      --raised: #FBF9FD;
+      --ink: #2B1E3A;
+      --muted: #6E5F80;
+      --line: #DCD2E7;
+      --iris: #6B4FA0;
+      --iris-soft: #E4DAF2;
+      --grove: #3F6E50;
+      --grove-soft: #DCE9DF;
+      --honey: #9A6A12;
+      --honey-soft: #F5E7C6;
+      --on-solid: #FFFFFF;
+      --serif: 'Gloock', Georgia, serif;
+      --sans: 'Figtree', system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #17111F;
+        --raised: #211A2C;
+        --ink: #EFE8F7;
+        --muted: #A898BA;
+        --line: #362C44;
+        --iris: #C4A8E8;
+        --iris-soft: #2F2442;
+        --grove: #8DBB9B;
+        --grove-soft: #1F2C25;
+        --honey: #E2B95A;
+        --honey-soft: #2E2616;
+        --on-solid: #17111F;
+      }
     }
 
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 48px 20px 80px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .header {
-      text-align: center;
-      padding-bottom: 36px;
-    }
-
-    .avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7c4fa8, #c4a8e8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin: 0 auto 16px;
-      box-shadow: 0 0 32px rgba(196,168,232,0.2);
-    }
-
-    .header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: var(--lavender);
-    }
-
-    .header p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-    }
-
-    .section-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 28px 0 10px;
-      font-weight: 500;
-    }
-
-    .link-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 8px;
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    }
-
-    .link-card:hover {
-      background: #221a30;
-      border-color: rgba(180,150,220,0.28);
-      transform: translateY(-1px);
-    }
-
-    .link-icon {
-      font-size: 1.2rem;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(196,168,232,0.08);
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-    .link-text { flex: 1; }
-
-    .link-title {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--lavender);
-    }
-
-    .link-subtitle {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 2px;
-      font-weight: 300;
-    }
-
-    .link-arrow {
-      color: var(--accent);
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
-
-    .about {
-      margin-top: 36px;
-      border-top: 1px solid var(--border);
-      padding-top: 28px;
-    }
-
-    .about-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .about-toggle span {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .about-toggle .chevron {
-      color: var(--muted);
-      font-size: 0.8rem;
-      transition: transform 0.2s;
-    }
-
-    .about-toggle.open .chevron {
-      transform: rotate(180deg);
-    }
-
-    .about-body {
-      display: none;
-      margin-top: 16px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-
-    .about-body.visible { display: block; }
-    .about-body p + p { margin-top: 10px; }
-
-    /* ── Stay in Touch ── */
-    .stay-in-touch {
-      margin-top: 40px;
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-    }
-
-    .stay-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .stay-header .stay-icon {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .stay-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--lavender);
-      letter-spacing: 0.04em;
-    }
-
-    .stay-header p {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 6px;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .stay-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .stay-form input[type="email"] {
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px 16px;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.83rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .stay-form input[type="email"]::placeholder {
-      color: var(--muted);
-      opacity: 0.6;
-    }
-
-    .stay-form input[type="email"]:focus {
-      border-color: rgba(180,150,220,0.4);
-    }
-
-    .question-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-      font-weight: 400;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
       line-height: 1.5;
     }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--iris); outline-offset: 3px; border-radius: 4px; }
 
-    .topic-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 16px 64px; }
+
+    /* ── Header and switchboard ── */
+    .top { max-width: 760px; padding-bottom: 36px; }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--iris-soft);
+      display: grid; place-items: center; font-size: 22px;
     }
+    .brand h1 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+    .brand p { font-size: 0.9rem; color: var(--muted); }
 
-    .topic-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 7px 14px;
-      color: var(--muted);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
+    .switch-lead {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 7vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+    .switch {
+      display: flex; flex-wrap: wrap; gap: 10px 10px;
+      margin-top: 18px;
+    }
+    .intent {
+      font: inherit;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 3.6vw, 1.5rem);
+      line-height: 1.2;
+      color: var(--ink);
+      background: transparent;
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 18px 9px;
       cursor: pointer;
-      transition: all 0.18s;
-      letter-spacing: 0.02em;
+      transition: background-color .18s, border-color .18s, color .18s;
+    }
+    .intent:hover { border-color: var(--iris); }
+    .intent[aria-pressed="true"] { background: var(--iris); border-color: var(--iris); color: var(--on-solid); }
+    .filter-note {
+      margin-top: 16px; font-size: 0.92rem; color: var(--muted);
+      min-height: 1.5em;
+    }
+    .filter-note button {
+      font: inherit; color: var(--iris); background: none; border: 0;
+      text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 0;
     }
 
-    .topic-btn:hover {
-      border-color: rgba(180,150,220,0.35);
-      color: var(--lavender);
-    }
+    /* ── Worlds ── */
+    .worlds { display: grid; gap: 40px; }
+    @media (min-width: 900px) { .worlds { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; } }
 
-    .topic-btn.selected {
-      background: rgba(196,168,232,0.12);
-      border-color: rgba(196,168,232,0.45);
-      color: var(--lavender);
-    }
+    .world { border-top: 4px solid var(--accent); padding-top: 20px; }
+    .world.hw { --accent: var(--iris); --accent-soft: var(--iris-soft); }
+    .world.mim { --accent: var(--grove); --accent-soft: var(--grove-soft); }
+    .world > h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; line-height: 1.15; }
+    .world > p { color: var(--muted); margin-top: 4px; max-width: 46ch; }
 
-    .submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, rgba(124,79,168,0.6), rgba(196,168,232,0.25));
-      border: 1px solid rgba(196,168,232,0.3);
+    .doors { list-style: none; margin-top: 14px; }
+    .door {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      transition: opacity .25s;
+    }
+    .door:last-child { border-bottom: 0; }
+    .door h3 { font-size: 1.12rem; font-weight: 600; line-height: 1.3; }
+    .door > p { color: var(--muted); margin-top: 4px; max-width: 52ch; }
+    body.filtering .door:not(.match) { opacity: .32; }
+    body.filtering .door.match h3 { color: var(--accent); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.92rem; font-weight: 500;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+    }
+    .btn:hover { background: var(--accent-soft); }
+    .btn.solid { background: var(--accent); color: var(--on-solid); }
+    .btn.solid:hover { filter: brightness(1.08); }
+
+    /* Talk list inside the conversations door */
+    .talks { list-style: none; margin-top: 12px; display: grid; gap: 2px; }
+    .talk {
+      display: grid; grid-template-columns: 1fr auto; gap: 2px 12px;
+      padding: 12px 14px;
+      background: var(--raised);
       border-radius: 10px;
-      padding: 13px;
-      color: var(--lavender);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.83rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 4px;
     }
+    .talk:first-child { border-radius: 14px 14px 10px 10px; }
+    .talk:last-child { border-radius: 10px 10px 14px 14px; }
+    .talk strong { font-weight: 600; }
+    .talk .price { font-weight: 600; color: var(--accent); text-align: right; }
+    .talk .len { grid-column: 1 / -1; font-size: 0.88rem; color: var(--muted); }
+    .talk .book { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; }
+    .talk .book a { font-size: 0.92rem; font-weight: 500; color: var(--accent); text-underline-offset: 3px; }
+    .hours { font-size: 0.88rem; color: var(--muted); margin-top: 10px; }
 
-    .submit-btn:hover {
-      background: linear-gradient(135deg, rgba(124,79,168,0.8), rgba(196,168,232,0.35));
-      border-color: rgba(196,168,232,0.5);
-      transform: translateY(-1px);
+    /* Seasonal printable */
+    .feature {
+      margin-top: 12px; padding: 14px 16px; border-radius: 14px;
+      background: var(--honey-soft);
     }
+    .feature small { display: block; font-size: 0.85rem; color: var(--honey); font-weight: 600; }
+    .feature a { font-weight: 600; text-underline-offset: 3px; }
+    .feature p { font-size: 0.92rem; color: var(--muted); margin-top: 2px; }
 
-    .submit-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
+    .books { list-style: none; margin-top: 12px; display: grid; gap: 12px; }
+    .book-row { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: start; }
+    .book-row img, .book-row .spine {
+      width: 52px; height: 68px; object-fit: cover; border-radius: 4px;
+      background: var(--accent-soft);
     }
+    .book-row strong { display: block; font-weight: 600; }
+    .book-row span { font-size: 0.88rem; color: var(--muted); }
 
-    .success-msg {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      background: rgba(196,168,232,0.06);
-      border: 1px solid rgba(196,168,232,0.15);
-      border-radius: 12px;
+    /* ── Follow ── */
+    .follow { margin-top: 56px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; }
+    .follow h2 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; }
+    .follow a { font-weight: 500; text-underline-offset: 3px; }
+
+    /* ── Forms ── */
+    .forms { margin-top: 48px; display: grid; gap: 40px; border-top: 1px solid var(--line); padding-top: 40px; }
+    @media (min-width: 900px) { .forms { grid-template-columns: 1fr 1fr; gap: 48px; } }
+    .form-block h2 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.2; }
+    .form-block > p { color: var(--muted); margin-top: 4px; max-width: 46ch; }
+    form { margin-top: 16px; display: grid; gap: 12px; max-width: 480px; }
+    label { font-size: 0.92rem; font-weight: 500; }
+    input, textarea {
+      width: 100%; font: inherit; color: var(--ink);
+      background: var(--raised);
+      border: 1.5px solid var(--line); border-radius: 10px;
+      padding: 11px 14px; margin-top: 4px;
     }
-
-    .success-msg.visible { display: block; }
-
-    .success-msg p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: var(--lavender);
-      line-height: 1.6;
+    textarea { resize: vertical; min-height: 110px; }
+    input:focus, textarea:focus { outline: none; border-color: var(--iris); }
+    fieldset { border: 0; }
+    legend { font-size: 0.92rem; font-weight: 500; margin-bottom: 8px; }
+    .topics { display: flex; flex-wrap: wrap; gap: 8px; }
+    .topic { position: relative; }
+    .topic input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+    .topic span {
+      display: inline-block; font-size: 0.9rem;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1.5px solid var(--line); cursor: pointer; user-select: none;
     }
-
-    .success-msg span {
-      font-size: 0.72rem;
-      color: var(--muted);
-      font-family: 'DM Sans', sans-serif;
-      display: block;
-      margin-top: 6px;
+    .topic input:checked + span { background: var(--iris-soft); border-color: var(--iris); color: var(--ink); }
+    .topic input:focus-visible + span { outline: 2px solid var(--iris); outline-offset: 2px; }
+    .submit {
+      font: inherit; font-weight: 600;
+      background: var(--iris); color: var(--on-solid);
+      border: 0; border-radius: 999px; padding: 12px 20px;
+      cursor: pointer; justify-self: start;
     }
+    .submit:disabled { opacity: .55; cursor: progress; }
+    .status { font-size: 0.95rem; min-height: 1.5em; }
+    .status.ok { color: var(--grove); }
+    .status.err { color: #B4364A; }
+    @media (prefers-color-scheme: dark) { .status.err { color: #F09AAA; } }
 
-    /* ── QR Code ── */
-    .qr-section {
-      margin-top: 48px;
-      border-top: 1px solid var(--border);
-      padding-top: 36px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
+    /* ── Footer ── */
+    footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 16px; color: var(--muted); font-size: 0.9rem; }
+    .qr-toggle {
+      font: inherit; color: var(--ink); background: none;
+      border: 1.5px solid var(--line); border-radius: 999px;
+      padding: 8px 14px; cursor: pointer; justify-self: start;
     }
+    .qr-panel { display: none; gap: 10px; justify-items: start; }
+    .qr-panel.open { display: grid; }
+    #qr { padding: 12px; background: #FFFFFF; border-radius: 12px; }
+    #qr img, #qr canvas { display: block; }
 
-    .qr-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .qr-frame {
-      position: relative;
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid rgba(196,168,232,0.18);
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(196,168,232,0.06);
-    }
-
-    .qr-frame::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 17px;
-      background: linear-gradient(135deg, rgba(196,168,232,0.15), transparent, rgba(124,79,168,0.1));
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    #qr-code {
-      position: relative;
-      z-index: 1;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    #qr-code canvas,
-    #qr-code img {
-      display: block;
-      border-radius: 8px;
-    }
-
-    .qr-caption {
-      text-align: center;
-    }
-
-    .qr-caption p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--lavender);
-      letter-spacing: 0.04em;
-    }
-
-    .qr-caption span {
-      font-size: 0.68rem;
-      color: var(--muted);
-      font-weight: 300;
-      display: block;
-      margin-top: 4px;
-      letter-spacing: 0.06em;
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.72rem;
-      color: rgba(154,135,176,0.4);
-      letter-spacing: 0.06em;
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
 
-    <div class="header">
-      <div class="avatar">💜</div>
-      <h1>Hallie</h1>
-      <p>The sister people didn't always have.</p>
-      <p style="margin-top:4px; font-size:0.7rem;">halliewho.com</p>
-    </div>
+    <header class="top">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">💜</div>
+        <div>
+          <h1>Hallie Who</h1>
+          <p id="tagline">Honest questions for the patterns we carry.</p>
+        </div>
+      </div>
 
-    <div class="section-label">🌐 Home Base</div>
-    <a class="link-card" href="https://halliewho.com" target="_blank">
-      <div class="link-icon">🌐</div>
-      <div class="link-text">
-        <div class="link-title">halliewho.com</div>
-        <div class="link-subtitle">Everything in one place</div>
+      <p class="switch-lead" id="switch-lead">Where do you want to start?</p>
+      <div class="switch" role="group" aria-labelledby="switch-lead">
+        <button class="intent" type="button" data-intent="talk" aria-pressed="false">Talk it through</button>
+        <button class="intent" type="button" data-intent="understand" aria-pressed="false">Figure out my patterns</button>
+        <button class="intent" type="button" data-intent="listen" aria-pressed="false">Listen or watch</button>
+        <button class="intent" type="button" data-intent="reflect" aria-pressed="false">Journal and reflect</button>
+        <button class="intent" type="button" data-intent="work" aria-pressed="false">Work together</button>
       </div>
-      <div class="link-arrow">→</div>
-    </a>
+      <p class="filter-note" id="filter-note" aria-live="polite"></p>
+    </header>
 
-    <div class="section-label">🎙️ Podcast — My Sister's Closet</div>
-    <a class="link-card" href="https://open.spotify.com/show/3j1tgy99SsRAI7jT7Lfjmf?si=MatAr010TmKWF81GfLSIIQ" target="_blank">
-      <div class="link-icon">💚</div>
-      <div class="link-text">
-        <div class="link-title">Spotify</div>
-        <div class="link-subtitle">My Sister's Closet</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
-    <a class="link-card" href="https://podcasts.apple.com/us/podcast/my-sisters-closet/id1868743628" target="_blank">
-      <div class="link-icon">🎵</div>
-      <div class="link-text">
-        <div class="link-title">Apple Podcasts</div>
-        <div class="link-subtitle">My Sister's Closet</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
-    <a class="link-card" href="https://iheart.com/podcast/317879265/" target="_blank">
-      <div class="link-icon">❤️</div>
-      <div class="link-text">
-        <div class="link-title">iHeart Radio</div>
-        <div class="link-subtitle">My Sister's Closet</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
+    <main>
+      <div class="worlds">
+        <section class="world hw" aria-labelledby="hw-title">
+          <h2 id="hw-title">Hallie Who</h2>
+          <p>Conversations, pattern quizzes, books, and printables.</p>
+          <ul class="doors" id="hw-doors"></ul>
+        </section>
 
-    <div class="section-label">📱 Follow Along</div>
-    <a class="link-card" href="https://www.instagram.com/halliiegrace?igsh=ZmQxMW0wcmtyYXd2&utm_source=qr" target="_blank">
-      <div class="link-icon">💜</div>
-      <div class="link-text">
-        <div class="link-title">@halliiegrace</div>
-        <div class="link-subtitle">Personal Instagram</div>
+        <section class="world mim" aria-labelledby="mim-title">
+          <h2 id="mim-title">My Inner Mind</h2>
+          <p>The app, the podcast, and the grove. Tools for your inner world, any time of day.</p>
+          <ul class="doors" id="mim-doors"></ul>
+        </section>
       </div>
-      <div class="link-arrow">→</div>
-    </a>
-    <a class="link-card" href="https://www.instagram.com/mysistersclosetpod?igsh=NGJ4c3BlZnhzMzdy&utm_source=qr" target="_blank">
-      <div class="link-icon">🎀</div>
-      <div class="link-text">
-        <div class="link-title">@mysistersclosetpod</div>
-        <div class="link-subtitle">Podcast Instagram</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
 
-    <div class="section-label">🛍️ Shop & Apps</div>
-    <a class="link-card" href="https://myinnermind.halliewho.com/" target="_blank">
-      <div class="link-icon">🧠</div>
-      <div class="link-text">
-        <div class="link-title">My Inner Mind</div>
-        <div class="link-subtitle">Wellness & journaling app</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
-    <a class="link-card" href="https://my-inner-grove.vercel.app" target="_blank">
-      <div class="link-icon">🌿</div>
-      <div class="link-text">
-        <div class="link-title">My Inner Grove</div>
-        <div class="link-subtitle">Enchanted forest wellness experience</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
-    <a class="link-card" href="https://www.etsy.com/shop/Innershelfstudio" target="_blank">
-      <div class="link-icon">📓</div>
-      <div class="link-text">
-        <div class="link-title">Innershelfstudio</div>
-        <div class="link-subtitle">Wellness printables on Etsy</div>
-      </div>
-      <div class="link-arrow">→</div>
-    </a>
+      <section class="follow" aria-labelledby="follow-title">
+        <h2 id="follow-title">Follow along</h2>
+        <a href="https://www.instagram.com/halliiegrace" target="_blank" rel="noopener">@halliiegrace on Instagram</a>
+        <a href="https://www.instagram.com/mysistersclosetpod" target="_blank" rel="noopener">Podcast on Instagram</a>
+      </section>
 
-    <div class="about">
-      <div class="about-toggle" onclick="toggleAbout(this)">
-        <span>About Hallie</span>
-        <span class="chevron">⌄</span>
-      </div>
-      <div class="about-body">
-        <p>Hallie is a creator, podcaster, and the sister people didn't always have. Host of My Sister's Closet — a podcast about emotional growth, real life, and the conversations women actually need to have.</p>
-        <p>She's also the creator of the My Inner Mind wellness app, My Inner Grove, and Innershelfstudio — a digital shop full of tools for your inner world. Everything lives at halliewho.com.</p>
-        <p>She's not here to give you advice. She's here to sit with you in it.</p>
-        <p style="margin-top:14px;">Come inside my inner world. 💜</p>
-      </div>
-    </div>
+      <div class="forms">
+        <section class="form-block" id="stay" aria-labelledby="stay-title">
+          <h2 id="stay-title">Get the letters</h2>
+          <p>New episodes, new quizzes, walk dates, and things worth sitting with. No spam, unsubscribe any time.</p>
+          <form id="subscribe-form" novalidate>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+            </label>
+            <fieldset>
+              <legend>What do you want more of? Pick any.</legend>
+              <div class="topics" id="topics"></div>
+            </fieldset>
+            <button class="submit" type="submit">Sign me up</button>
+            <p class="status" id="subscribe-status" role="status"></p>
+          </form>
+        </section>
 
-   <!-- ── Stay in Touch ── -->
-    <div class="stay-in-touch">
-      <div class="stay-header">
-        <div class="stay-icon">✉️</div>
-        <h2>Stay in Touch</h2>
-        <p>Drop your email and I'll keep you in the loop —<br>new episodes, resources, and things worth sitting with.</p>
+        <section class="form-block" id="collab" aria-labelledby="collab-title">
+          <h2 id="collab-title">Collabs and proposals</h2>
+          <p>A podcast guest idea, a brand partnership, an event, or something else worth exploring. It goes straight to my inbox.</p>
+          <form id="collab-form" novalidate>
+            <label>Your name
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>What do you have in mind?
+              <textarea name="message" required></textarea>
+            </label>
+            <button class="submit" type="submit">Send message</button>
+            <p class="status" id="collab-status" role="status"></p>
+          </form>
+        </section>
       </div>
-      <input type="email" id="email-input" placeholder="your@email.com" />
-      <p class="topics-label">What topics do you most want to hear about? (pick all that apply)</p>
-      <div class="topics">
-        <button class="topic" onclick="toggleTopic(this)">Mental health</button>
-        <button class="topic" onclick="toggleTopic(this)">Relationships</button>
-        <button class="topic" onclick="toggleTopic(this)">Self-growth</button>
-        <button class="topic" onclick="toggleTopic(this)">Healing &amp; trauma</button>
-        <button class="topic" onclick="toggleTopic(this)">Style &amp; thrift</button>
-        <button class="topic" onclick="toggleTopic(this)">Spirituality</button>
-        <button class="topic" onclick="toggleTopic(this)">Friendship</button>
-        <button class="topic" onclick="toggleTopic(this)">Life transitions</button>
-      </div>
-      <button class="subscribe-btn" onclick="handleSubscribe()">Come inside my inner world 💜</button>
-      <p id="subscribe-msg" style="text-align:center;margin-top:12px;color:#c4a8e8;display:none;"></p>
-    </div>
+    </main>
 
-    <!-- ── Work With Me ── -->
-    <div class="stay-in-touch" style="border-top:1px solid rgba(180,150,220,0.12);padding-top:40px;">
-      <div class="stay-header">
-        <div class="stay-icon">🤝</div>
-        <h2>Work With Me</h2>
-        <p>Have a collab idea, a proposition, or something worth exploring together? I'd love to hear it.</p>
+    <footer>
+      <button class="qr-toggle" type="button" id="qr-toggle" aria-expanded="false" aria-controls="qr-panel">Show QR code for this page</button>
+      <div class="qr-panel" id="qr-panel">
+        <div id="qr"></div>
+        <span>Scan to open links.halliewho.com</span>
       </div>
-      <input type="text" id="collab-name" placeholder="Your name" style="margin-bottom:10px;" />
-      <input type="email" id="collab-email" placeholder="your@email.com" style="margin-bottom:10px;" />
-      <textarea id="collab-msg" placeholder="Tell me what you have in mind..." rows="4" style="width:100%;padding:14px 18px;border-radius:14px;border:1px solid rgba(180,150,220,0.2);background:rgba(255,255,255,0.04);color:#f0eaf8;font-family:inherit;font-size:0.95rem;resize:none;margin-bottom:10px;"></textarea>
-      <button class="subscribe-btn" onclick="handleCollab()">Send it over 💜</button>
-      <p id="collab-status" style="text-align:center;margin-top:12px;color:#c4a8e8;display:none;"></p>
-    </div>
+      <p>Hallie Who LLC. Made in Alabama.</p>
+    </footer>
+  </div>
+
+  <noscript><p style="padding:16px;max-width:1080px;margin:0 auto;">Turn on JavaScript to see every link, or visit <a href="https://halliewho-site.vercel.app">the Hallie Who site</a>.</p></noscript>
 
   <script>
-  function toggleTopic(btn) {
-    btn.classList.toggle('active');
+  // ─────────────────────────────────────────────────────────────
+  // WHERE THE MAIN SITE LIVES
+  // The new site is on Vercel until halliewho.com is switched over.
+  // After the domain switch, change this to "https://halliewho.com".
+  const SITE = "https://halliewho-site.vercel.app";
+
+  // Prices, talks, books, and the seasonal printable are read live from
+  // the halliewho-site repo on GitHub (site.config.mjs). Edit them there
+  // and this page picks them up (jsDelivr can take up to 12 hours to refresh).
+  const LIVE_CONFIG = "https://cdn.jsdelivr.net/gh/halliegracehm/halliewho-site@main/site.config.mjs";
+
+  // Podcast and app links that aren't in site.config.mjs yet.
+  const PODCAST = {
+    podbean: "https://halliegracehm.podbean.com",
+    spotify: "https://open.spotify.com/show/3j1tgy99SsRAI7jT7Lfjmf",
+    apple: "https://podcasts.apple.com/us/podcast/my-sisters-closet/id1868743628"
+  };
+  const APP_WEB = "https://myinnermind.halliewho.com/";
+  // ─────────────────────────────────────────────────────────────
+
+  // Snapshot of site.config.mjs, used if the live copy can't load.
+  const FALLBACK = {
+    tagline: "Honest questions for the patterns we carry.",
+    journalPrice: "$12",
+    innerGroveUrl: "https://myinnergrove.halliewho.com",
+    appStoreUrl: "",
+    podcastUrl: "",
+    etsyShop: "https://www.etsy.com/shop/Innershelfstudio",
+    products: {
+      yearReview: { name: "2026 Year in Review + 2027 Intentions", price: "$7.00", url: "https://www.etsy.com/listing/4593392405/2026-reflection-journal-2027-intentions", why: "A 15-page workbook to look back honestly and walk into 2027 on purpose." }
+    },
+    seasonalPick: "yearReview",
+    bookLaunchSignup: "https://mailchi.mp/460a5b0c7915/book-launch-signup",
+    books: [
+      { title: "Underneath a Large Leafy Tree", kind: "Children's picture book", cover: "assets/leafy-tree-cover.jpg", status: "Coming soon", buyUrl: "" },
+      { title: "What Are You", kind: "Memoir", status: "In progress", buyUrl: "" }
+    ],
+    talkHours: "Monday through Wednesday evenings, and weekends",
+    talks: [
+      { name: "10 Minute Talk", price: "$25", length: "10 minutes, by phone", bookings: [{ label: "Book a time", url: "https://cal.com/halliewho/15min" }] },
+      { name: "Deep Conversation", price: "$85", length: "50 minutes, by phone or video", bookings: [{ label: "Book a time", url: "https://cal.com/halliewho/deepconversation" }] },
+      { name: "Walk & Talk", price: "$45 by phone, $60 in person", length: "25 minutes", bookings: [{ label: "Book by phone", url: "https://cal.com/halliewho/walkandtalk" }, { label: "Book in person", url: "https://cal.com/halliewho/walk-and-talk-in-person" }] },
+      { name: "Monthly Accountability", price: "$125 a month", length: "Two 25-minute calls a month", bookings: [{ label: "Book your first call", url: "https://cal.com/halliewho/monthly-accountability" }] }
+    ],
+    services: [{ price: "Starting at $350" }, { price: "Starting at $150" }, { price: "Starting at $125" }]
+  };
+
+  const TOPICS = ["Mental health", "Relationships", "Self-growth", "Healing", "Friendship", "Family and belonging", "Life transitions", "Spirituality"];
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const ext = (url) => /^https?:/.test(url) && !url.startsWith(SITE) ? ' target="_blank" rel="noopener"' : "";
+  const link = (url, label, solid) => `<a class="btn${solid ? " solid" : ""}" href="${esc(url)}"${ext(url)}>${esc(label)}</a>`;
+  const door = (intents, inner) => `<li class="door" data-for="${intents}">${inner}</li>`;
+
+  function lowestPrice(services) {
+    const nums = (services || []).map((s) => parseFloat(String(s.price).replace(/[^0-9.]/g, ""))).filter((n) => !isNaN(n));
+    return nums.length ? "$" + Math.min(...nums) : "";
   }
 
-  async function handleSubscribe() {
-    const email = document.getElementById('email-input').value;
-    const msg = document.getElementById('subscribe-msg');
-    if (!email) { msg.style.display='block'; msg.textContent='Please enter your email!'; return; }
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await res.json();
-      msg.style.display = 'block';
-      msg.textContent = data.success ? "You're in! 💜" : 'Something went wrong, try again.';
-    } catch(e) {
-      msg.style.display = 'block';
-      msg.textContent = 'Something went wrong, try again.';
-    }
+  function render(cfg) {
+    if (cfg.tagline) document.getElementById("tagline").textContent = cfg.tagline;
+
+    const talks = (cfg.talks || []).map((t) => `
+      <li class="talk">
+        <strong>${esc(t.name)}</strong>
+        <span class="price">${esc(t.price)}</span>
+        <span class="len">${esc(t.length)}</span>
+        <span class="book">${(t.bookings || []).map((b) => `<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.label)}</a>`).join("")}</span>
+      </li>`).join("");
+
+    const pick = cfg.seasonalPick && cfg.products && cfg.products[cfg.seasonalPick];
+    const feature = pick ? `
+      <div class="feature">
+        <small>New this season</small>
+        <a href="${esc(pick.url)}" target="_blank" rel="noopener">${esc(pick.name)}</a>, ${esc(pick.price)}
+        <p>${esc(pick.why)}</p>
+      </div>` : "";
+
+    const books = (cfg.books || []).map((b) => {
+      const cover = b.cover ? `<img src="${esc(SITE + "/" + b.cover)}" alt="" loading="lazy" />` : `<div class="spine" aria-hidden="true"></div>`;
+      return `<li class="book-row">${cover}<div><strong>${esc(b.title)}</strong><span>${esc(b.kind)}. ${esc(b.status)}.</span>${b.buyUrl ? `<div class="actions">${link(b.buyUrl, "Buy the book", true)}</div>` : ""}</div></li>`;
+    }).join("");
+    const anyForSale = (cfg.books || []).some((b) => b.buyUrl);
+
+    const fromPrice = lowestPrice(cfg.services);
+
+    document.getElementById("hw-doors").innerHTML = [
+      door("talk", `
+        <h3>Talk with Hallie</h3>
+        <p>A real conversation by phone, video, or on a walk. Not therapy, not advice. Someone to think it through with.</p>
+        <ul class="talks">${talks}</ul>
+        ${cfg.talkHours ? `<p class="hours">Available ${esc(cfg.talkHours)}.</p>` : ""}
+        <div class="actions">${link(SITE + "/talk-with-hallie/", "Compare the options")}</div>`),
+      door("understand", `
+        <h3>Find your pattern</h3>
+        <p>Six free quizzes on how you love, fight, connect, and protect yourself, each with a result page and journal prompts.</p>
+        <div class="actions">${link(SITE + "/find-your-pattern/", "Take a quiz", true)}${link(SITE + "/patterns/", "Browse all patterns")}</div>`),
+      door("reflect", `
+        <h3>Pages for You</h3>
+        <p>A guided journal for the things you keep carrying around${cfg.journalPrice ? `, ${esc(cfg.journalPrice)}` : ""}.</p>
+        <div class="actions">${link(SITE + "/journal/", "See the journal")}</div>`),
+      door("reflect", `
+        <h3>Printables</h3>
+        <p>Journals, reflection pages, and affirmation prints from Innershelfstudio on Etsy.</p>
+        ${feature}
+        <div class="actions">${link(cfg.etsyShop || FALLBACK.etsyShop, "Shop on Etsy")}${link(SITE + "/shop/", "Which one fits me?")}</div>`),
+      door("reflect", `
+        <h3>Books</h3>
+        <p>A picture book for little ones and a memoir about growing up adopted in a big Alabama family.</p>
+        <ul class="books">${books}</ul>
+        <div class="actions">${link(SITE + "/books/", "About the books")}${!anyForSale && cfg.bookLaunchSignup ? link(cfg.bookLaunchSignup, "Tell me when they launch") : ""}</div>`),
+      door("work", `
+        <h3>Done-for-you services</h3>
+        <p>Quiz funnels, lead magnet pages, and Instagram DM automation for creators and small businesses${fromPrice ? `, from ${fromPrice}` : ""}.</p>
+        <div class="actions">${link(SITE + "/work-with-me/", "See services and pricing", true)}${link("#collab", "Send a proposal")}</div>`)
+    ].join("");
+
+    const appUrl = cfg.appStoreUrl || APP_WEB;
+    const podcastLinks = [
+      cfg.podcastUrl ? link(cfg.podcastUrl, "Watch on YouTube", true) : "",
+      link(PODCAST.spotify, "Spotify", !cfg.podcastUrl),
+      link(PODCAST.apple, "Apple Podcasts"),
+      link(PODCAST.podbean, "Podbean")
+    ].join("");
+
+    document.getElementById("mim-doors").innerHTML = [
+      door("reflect", `
+        <h3>My Inner Mind app</h3>
+        <p>A wellness and journaling app with daily mood check-ins. On iPhone and the web.</p>
+        <div class="actions">${link(appUrl, cfg.appStoreUrl ? "Get it on the App Store" : "Open the app", true)}${cfg.appStoreUrl ? link(APP_WEB, "Use it on the web") : ""}</div>`),
+      door("listen", `
+        <h3>My Inner Mind podcast</h3>
+        <p>Honest conversations about the patterns we carry: friendship, family, boundaries, and choosing better. Formerly My Sister's Closet.</p>
+        <div class="actions">${podcastLinks}</div>`),
+      door("reflect", `
+        <h3>My Inner Grove</h3>
+        <p>A quiet, enchanted-forest space to slow down and check in with yourself.</p>
+        <div class="actions">${link(cfg.innerGroveUrl || FALLBACK.innerGroveUrl, "Step into the grove")}</div>`),
+      door("talk", `
+        <h3>Walk with us</h3>
+        <p>Set It Down Saturdays are community walks around the Birmingham area. Get on the list below to hear about the next one.</p>
+        <div class="actions">${link("#stay", "Get walk dates")}</div>`)
+    ].join("");
+
+    applyFilter();
   }
 
-  async function handleCollab() {
-    const name = document.getElementById('collab-name').value;
-    const email = document.getElementById('collab-email').value;
-    const message = document.getElementById('collab-msg').value;
-    const status = document.getElementById('collab-status');
-    if (!name || !email || !message) {
-      status.style.display='block';
-      status.textContent='Please fill in all fields!';
-      return;
-    }
-    try {
-      const res = await fetch('/api/collab', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      });
-      const data = await res.json();
-      status.style.display = 'block';
-      status.textContent = data.success ? "Got it! I'll be in touch 💜" : 'Something went wrong, try again.';
-    } catch(e) {
-      status.style.display = 'block';
-      status.textContent = 'Something went wrong, try again.';
-    }
+  // ── Switchboard ──
+  let current = null;
+  const labels = {
+    talk: "conversations and walks", understand: "the pattern quizzes", listen: "the podcast",
+    reflect: "journals, books, the app, and the grove", work: "working together"
+  };
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function applyFilter(scroll) {
+    const doors = document.querySelectorAll(".door");
+    document.body.classList.toggle("filtering", !!current);
+    let first = null;
+    doors.forEach((d) => {
+      const hit = !!current && d.dataset.for.split(" ").includes(current);
+      d.classList.toggle("match", hit);
+      if (hit && !first) first = d;
+    });
+    document.querySelectorAll(".intent").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.intent === current)));
+    const note = document.getElementById("filter-note");
+    note.innerHTML = current ? `Highlighting ${labels[current]}. <button type="button" id="clear-filter">Show everything</button>` : "";
+    if (current) document.getElementById("clear-filter").onclick = () => { current = null; applyFilter(); };
+    if (scroll && first) first.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   }
+
+  document.querySelectorAll(".intent").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      current = current === btn.dataset.intent ? null : btn.dataset.intent;
+      applyFilter(true);
+    });
+  });
+
+  // ── Topics ──
+  document.getElementById("topics").innerHTML = TOPICS.map((t) =>
+    `<label class="topic"><input type="checkbox" name="topics" value="${esc(t)}" /><span>${esc(t)}</span></label>`).join("");
+
+  // ── Forms ──
+  async function post(url, body) {
+    const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    let data = {};
+    try { data = await res.json(); } catch (e) {}
+    if (!res.ok || !data.success) throw new Error(data.error || "That didn't go through.");
+    return data;
+  }
+  const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  document.getElementById("subscribe-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, status = document.getElementById("subscribe-status"), btn = f.querySelector(".submit");
+    const email = f.email.value.trim();
+    const topics = [...f.querySelectorAll('input[name="topics"]:checked')].map((i) => i.value);
+    status.className = "status";
+    if (!validEmail(email)) { status.classList.add("err"); status.textContent = "Enter an email address like you@example.com."; f.email.focus(); return; }
+    btn.disabled = true; status.textContent = "Signing you up…";
+    try {
+      const data = await post("/api/subscribe", { email, topics });
+      status.classList.add("ok");
+      status.textContent = data.existing ? "You're already on the list. Your topics are saved. 💜" : "You're in. Check your inbox for a hello. 💜";
+      f.reset();
+    } catch (err) {
+      status.classList.add("err"); status.textContent = err.message + " Try again in a minute.";
+    } finally { btn.disabled = false; }
+  });
+
+  document.getElementById("collab-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, status = document.getElementById("collab-status"), btn = f.querySelector(".submit");
+    const name = f.name.value.trim(), email = f.email.value.trim(), message = f.message.value.trim();
+    status.className = "status";
+    if (!name || !message) { status.classList.add("err"); status.textContent = "Add your name and a short message."; return; }
+    if (!validEmail(email)) { status.classList.add("err"); status.textContent = "Enter an email address so I can write back."; f.email.focus(); return; }
+    btn.disabled = true; status.textContent = "Sending…";
+    try {
+      await post("/api/collab", { name, email, message });
+      status.classList.add("ok"); status.textContent = "Message sent. I'll get back to you soon. 💜";
+      f.reset();
+    } catch (err) {
+      status.classList.add("err"); status.textContent = err.message + " You can also email halliegracehm@gmail.com.";
+    } finally { btn.disabled = false; }
+  });
+
+  // ── QR code ──
+  const qrToggle = document.getElementById("qr-toggle");
+  let qrMade = false;
+  qrToggle.addEventListener("click", () => {
+    const panel = document.getElementById("qr-panel");
+    const open = panel.classList.toggle("open");
+    qrToggle.setAttribute("aria-expanded", String(open));
+    qrToggle.textContent = open ? "Hide QR code" : "Show QR code for this page";
+    if (open && !qrMade && window.QRCode) {
+      new QRCode(document.getElementById("qr"), { text: "https://links.halliewho.com", width: 180, height: 180, colorDark: "#2B1E3A", colorLight: "#FFFFFF" });
+      qrMade = true;
+    }
+  });
+
+  // ── Load ──
+  render(FALLBACK);
+  import(LIVE_CONFIG)
+    .then((m) => { if (m && m.default) render({ ...FALLBACK, ...m.default }); })
+    .catch(() => { /* keep the snapshot */ });
   </script>
-  </body>
+</body>
 </html>
